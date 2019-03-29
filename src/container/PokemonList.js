@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'reactstrap';
-import PokemonCard from '../components/PokemonCard';
-import { fetchPokemonsIfRequired } from '../actions/pokemon';
+import { fetchPokemonsIfRequired } from '../actions';
 
 class PokemonList extends Component {
   componentDidMount() {
@@ -15,13 +13,11 @@ class PokemonList extends Component {
 
     if (listing.isFetching || !listing.data) return <p>Fetching..</p>;
     return (
-      <Row>
+      <ul>
         {listing.data.map((i, iter) => (
-          <Col key={iter} xs={12} sm={6} md={4} lg={3} xl={2} className="pt-2">
-            <PokemonCard title={i.name} />
-          </Col>
+          <li key={iter}>{i.name}</li>
         ))}
-      </Row>
+      </ul>
     );
   }
 }

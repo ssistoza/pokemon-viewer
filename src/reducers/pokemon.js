@@ -3,6 +3,7 @@ import {
   RECEIVE_POKEMON_LIST,
   REQUEST_POKEMOM,
   RECEIVE_POKEMON,
+  SEARCH_POKEMON,
 } from '../actions/pokemon';
 
 export const listOfPokemons = (state = {}, action) => {
@@ -17,6 +18,15 @@ export const listOfPokemons = (state = {}, action) => {
         lastUpdated: action.receivedAt,
         data: action.list,
       });
+    default:
+      return state;
+  }
+};
+
+export const searchText = (state = '', action) => {
+  switch (action.type) {
+    case SEARCH_POKEMON:
+      return action.searchPokemon;
     default:
       return state;
   }

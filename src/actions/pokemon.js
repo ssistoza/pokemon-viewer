@@ -3,6 +3,7 @@ import fetch from 'cross-fetch';
 export const REQUEST_POKEMON_LIST = 'REQUEST_POKEMON_LIST';
 export const RECEIVE_POKEMON_LIST = 'RECEIVE_POKEMON_LIST';
 
+/* GET POKEMON LIST */
 function requestPokemonList() {
   return { type: REQUEST_POKEMON_LIST };
 }
@@ -33,6 +34,12 @@ export function fetchPokemonsIfRequired() {
     }
     dispatch(fetchPokemons());
   };
+}
+
+/* FILTER POKEMON LIST */
+export const SEARCH_POKEMON = 'SEARCH_POKEMON';
+export function filterPokemons(searchTerm) {
+  return { type: SEARCH_POKEMON, searchPokemon: searchTerm };
 }
 
 /* GET POKEMON INFO */

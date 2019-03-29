@@ -8,4 +8,21 @@ export function capitalize(val) {
   return val;
 }
 
+export function prettify(val) {
+  if ('string' === typeof val) {
+    let result = val.toLowerCase();
+
+    let resultArray = result.split('-');
+    if (resultArray.length > 1) {
+      result = resultArray.reduce(
+        (acc, val) => `${capitalize(acc)} ${capitalize(val)}`
+      );
+    } else {
+      result = capitalize(resultArray[0]);
+    }
+
+    return result;
+  }
+}
+
 
