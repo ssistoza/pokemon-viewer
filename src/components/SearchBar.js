@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { withStyles, TextField } from '@material-ui/core';
 import { compose } from 'recompose';
-import { filterPokemons } from '../actions';
+import { filter } from '../actions';
 
 const styles = theme => ({
   container: {
@@ -28,7 +28,7 @@ class Input extends React.Component {
 
   handleInputChange = e => {
     const { dispatch } = this.props;
-    dispatch(filterPokemons(e.target.value));
+    dispatch(filter(e.target.value));
   };
 
   render() {

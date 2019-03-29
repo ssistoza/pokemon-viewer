@@ -3,13 +3,18 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MenuList, MenuItem } from '@material-ui/core';
 
-import { fetchBerriesIfRequired } from '../actions';
+import { fetchBerriesIfRequired, clearFilter } from '../actions';
 import { capitalize } from '../helper';
 
 class BerryMenuList extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchBerriesIfRequired());
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(clearFilter());
   }
 
   render() {
@@ -19,7 +24,7 @@ class BerryMenuList extends Component {
 
     return (
       <MenuList>
-        {listing.data.results.map(i => (
+        {listing.data.map(i => (
           <MenuItem key={i.name} component={Link} to={`/berry/${i.name}`}>
             {capitalize(i.name)}
           </MenuItem>
@@ -31,6 +36,20 @@ class BerryMenuList extends Component {
 
 function mapStateToProps(state) {
   const listing = state.listOfBerries || { isFetching: true };
+
+  if (state.searchText && listing.data) {
+    const filteredData = listing.data.filter(item =>
+      item.name.toLowerCase().startsWith(state.searchText.toLowerCase())
+    );
+
+    return {
+      listing: {
+        isFetching: listing.isFetching,
+        lastUpdated: listing.lastUpdated,
+        data: filteredData,
+      },
+    };
+  }
 
   return { listing };
 }

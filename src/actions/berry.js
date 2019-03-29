@@ -6,7 +6,7 @@ export const RECEIVE_BERRIES = 'RECEIVE_BERRIES';
 const requestBerries = () => ({ type: REQUEST_BERRIES });
 const receiveBerries = json => ({
   type: RECEIVE_BERRIES,
-  list: json,
+  list: json.results,
   receivedAt: Date.now(),
 });
 
@@ -28,3 +28,4 @@ export const fetchBerriesIfRequired = () => {
     dispatch(fetchBerries());
   };
 };
+

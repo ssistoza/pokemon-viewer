@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MenuList, MenuItem } from '@material-ui/core';
-import { fetchPokemonsIfRequired } from '../actions';
+import { fetchPokemonsIfRequired, clearFilter } from '../actions';
 import { capitalize } from '../helper';
 
 class PokemonMenuList extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchPokemonsIfRequired());
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(clearFilter());
   }
 
   render() {

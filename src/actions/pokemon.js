@@ -36,12 +36,6 @@ export function fetchPokemonsIfRequired() {
   };
 }
 
-/* FILTER POKEMON LIST */
-export const SEARCH_POKEMON = 'SEARCH_POKEMON';
-export function filterPokemons(searchTerm) {
-  return { type: SEARCH_POKEMON, searchPokemon: searchTerm };
-}
-
 /* GET POKEMON INFO */
 export const REQUEST_POKEMOM = 'REQUEST_POKEMOM';
 export const RECEIVE_POKEMON = 'RECEIVE_POKEMON';
