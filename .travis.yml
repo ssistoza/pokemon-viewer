@@ -6,4 +6,12 @@ cache:
     - node_modules
 script:
   - yarn install
-  - echo ${TEST}
+  - yarn run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  local-dir: /build
+  on:
+    branch: master
