@@ -6,4 +6,4 @@ cache:
     - node_modules
 script:
   - yarn install
-  - echo ${REACT_APP_POKEMON_URL}
+  - echo ${TEST}
