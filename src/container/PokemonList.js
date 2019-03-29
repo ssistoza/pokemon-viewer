@@ -17,6 +17,7 @@ class PokemonList extends Component {
         {listing.data.map((i, iter) => (
           <li key={iter}>{i.name}</li>
         ))}
+        a Test
       </ul>
     );
   }
