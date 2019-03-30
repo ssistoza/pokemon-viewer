@@ -7,11 +7,3 @@ cache:
 script:
   - yarn install
   - yarn run deploy
-# deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   github-token: $GH_TOKEN
-#   keep-history: true
-#   local-dir: build/
-#   on:
-#     branch: master
